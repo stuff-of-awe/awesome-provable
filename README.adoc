@@ -9,6 +9,7 @@ proofs about the properties of computer programs.
 type safety
 * link:#proof-assistants[Proof Assistants] - Interactive theorem provers
 used to prove properties of programs.
+* link:#program-verifiers[Program verifiers] - Rust and Ada verification tools.
 * link:#projects[Projects] - Projects involving provably correct code.
 * link:#books[Books] - Textbooks commonly referred to
 * link:#courses[Courses] - Online courses (youtube, university courses)
@@ -141,6 +142,23 @@ several verifiers on top of Viper, including the
 https://www.pm.inf.ethz.ch/research/gobra.html[Gobra] verifier for Go,
 https://www.pm.inf.ethz.ch/research/nagini.html[Nagini] for Python and
 https://www.pm.inf.ethz.ch/research/prusti.html[Prusti] for Rust.
+
+=== Program verifiers
+
+Reviewed 2026-11-07. These links point to the maintainers' upstream
+repositories; their install commands and proof outcomes were not tested for
+this collection. The tools have different proof models. Pearlite is Creusot's
+specification language, not a separate solver.
+
+* https://github.com/creusot-rs/creusot[Creusot and Pearlite] - Contracts and
+  deductive verification for Rust programs.
+* https://github.com/verus-lang/verus[Verus] - A verification language and
+  tooling for Rust programs.
+* https://github.com/model-checking/kani[Kani] - A model checker for Rust.
+* https://github.com/AeneasVerif/aeneas[Aeneas] - A Rust verification toolchain
+  that translates Rust programs for proof in theorem provers.
+* https://github.com/AdaCore/spark2014[SPARK and GNATprove] - Verification
+  tooling for Ada programs.
 
 === Projects
 
