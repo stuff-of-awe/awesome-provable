@@ -1,0 +1,107 @@
+// SPDX-License-Identifier: CC-BY-SA-4.0
+= Verified proof machinery, independent checkers, and meta-theory
+:toc:
+
+Reviewed: 2026-11-15. Initial curation: Stuff of Awe contributors; curator sought.
+Status: *starter inventory*. Canonical sources were inspected, but no tools were
+installed, benchmarked, independently executed, or security-audited in this review.
+
+This is a guide to the question *who checks the checker?* It complements the
+proof assistants and program verifiers in the main collection. A proof producer,
+certificate checker, independent reimplementation, formal metatheory, and a
+machine-code-level verified prover offer different guarantees. None should be
+silently promoted into the next category.
+
+== Mechanised metatheory and kernel alternatives
+
+* https://github.com/MetaRocq/metarocq[MetaRocq] — formalises the Rocq
+  calculus within Rocq; includes metatheoretic results, verified type checking
+  and erasure. Its results have a specified object-language scope; they do not
+  amount to a proof that every possible Rocq plugin is sound.
+* https://github.com/digama0/lean4lean[Lean4Lean] — Lean 4 kernel
+  reimplementation in Lean with metatheory work. It is derived from the
+  original C++ design and may share bugs, so call it a second checker and
+  formalisation effort, not a fully independent or wholly verified kernel.
+* https://github.com/ammkrn/nanoda_lib[nanoda] — Rust checker for exported
+  Lean 4 declarations, useful for implementation-diverse cross-checking. An
+  alternative implementation is not by itself a formally verified checker.
+* https://cakeml.org/candle/[Candle] — HOL Light-style interactive prover
+  implemented using CakeML. Its developers report an end-to-end machine-code
+  soundness theorem, established using HOL4. The scope is what its certified
+  output channel exports, not arbitrary I/O or external user claims.
+
+== Checking external proof certificates
+
+* https://github.com/smtcoq/smtcoq[SMTCoq] — Rocq plugin with certified
+  checkers for supported SAT/SMT proof witnesses and tactics that can use
+  external solvers. Check the precise solver, proof format, and theory support
+  before counting a proof as rechecked.
+* https://github.com/ufmg-smite/carcara[Carcara] — independent Alethe-format
+  SMT proof checker and proof elaborator. Do not call the implementation
+  formally verified merely because it checks proof objects.
+* https://www.cakeml.org/checkers.html[CakeML verified checkers] — overview
+  of the verified proof-checker family and its trust boundaries:
+  https://github.com/tanyongkiam/cake_lpr[cake_lpr] for LRAT/LPR
+  unsatisfiability proofs, CakePB for pseudo-Boolean evidence, and
+  other checker work such as cake_xlrup and cake_vipr.
+* https://satcompetition.github.io/2026/output.html[SAT Competition 2026
+  certification pipelines] — documented interfaces using DPR, GRAT and
+  VeriPB checking. Toolchain input formats and certificate conversion are
+  significant parts of the end-to-end assurance argument.
+* https://satcompetition.github.io/2024/downloads/checkers/grat.pdf[GRAT] —
+  Peter Lammich's formally verified SAT unsatisfiability proof-checker
+  toolchain. Consult the stated implementation boundary and proof format.
+* https://veripb.org/[VeriPB] — pseudo-Boolean proof format and ecosystem;
+  distinguish a format, a proof-producing solver, an ordinary checker, and
+  https://www.cakeml.org/checkers.html[verified CakePB checking].
+
+== Logical frameworks, exchange, and rechecking
+
+* https://github.com/Deducteam/Dedukti[Dedukti] — checks deductions in
+  the lambda-Pi calculus modulo rewriting, supporting cross-system proof
+  exchange. Translation validity and the logic encoded remain separate proof
+  obligations.
+* https://github.com/Deducteam/lambdapi[Lambdapi] — proof assistant in the
+  lambda-Pi calculus modulo rewriting with proof translation and checking
+  applications. Do not infer that a translation is verified solely because
+  its output typechecks.
+* https://cakeml.org/[CakeML project] — includes a verified OpenTheory
+  article checker among its case studies; identify the actual checker rather
+  than attributing its guarantees to the interchange format alone.
+
+== A practical evidence ladder
+
+. *Produced*: a tool says that it found a proof or counterexample.
+. *Replayable*: an independently saved certificate or script can be checked.
+. *Checked*: a named checker version accepted the exact artifact with the
+  relevant assumptions and settings.
+. *Independent*: a genuinely different implementation and input chain checked
+  the same statement; shared parsing/export assumptions still matter.
+. *Mechanised checker correctness*: a formal proof covers a specified checker,
+  logic and input format.
+. *End-to-end verified execution*: the machine-code-producing chain has an
+  explicit correctness theorem and operational assumptions.
+
+These are *different claims*, not a universal ordinal scoring system.
+Distinguish a negative result or model counterexample from a proof; record
+timeouts and unverified translations separately.
+
+== Reproducible curation checklist
+
+For each checker record its canonical source, version/commit, source theorem
+or published claim, input and output formats, trusted computing base, axioms
+and admitted gaps, sample problem, execution command, receipt or failure,
+licence, and last verified review date. The present entries are links and
+descriptions, *not* executed receipts.
+
+Related collections: https://github.com/stuff-of-awe/awesome-lean[Lean],
+https://github.com/stuff-of-awe/awesome-coq[Rocq/Coq],
+https://github.com/stuff-of-awe/awesome-hol4[HOL4],
+https://github.com/stuff-of-awe/awesome-metamath[Metamath],
+https://github.com/stuff-of-awe/awesome-z3[Z3], and
+https://github.com/stuff-of-awe/awesome-cvc5[cvc5].
+
+Contribute improvements with exact canonical links and honest provenance.
+This list can be promoted to its own awesome repository when an assigned
+curator and standalone learning material justify one, following the
+https://github.com/stuff-of-awe/.github/blob/main/docs/collections/MAINTENANCE.adoc[collection policy].
