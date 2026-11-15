@@ -79,8 +79,11 @@ silently promoted into the next category.
   the same statement; shared parsing/export assumptions still matter.
 . *Mechanised checker correctness*: a formal proof covers a specified checker,
   logic and input format.
-. *End-to-end verified execution*: the machine-code-producing chain has an
-  explicit correctness theorem and operational assumptions.
+. *Verified executable assurance*: a mechanised theorem must link the
+  actual executable checker's acceptance behavior (or the prover's emitted
+  conclusions) to the intended soundness property, in a specified logic,
+  format, and operational model. Verified compilation alone does not establish
+  the checker's soundness or prove that accepted certificates are valid.
 
 These are *different claims*, not a universal ordinal scoring system.
 Distinguish a negative result or model counterexample from a proof; record
