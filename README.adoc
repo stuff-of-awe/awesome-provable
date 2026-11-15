@@ -354,3 +354,7 @@ Systems from Hackers]
 * https://www.youtube.com/watch?v=tRtK4xOK-8o[Formal Methods for
 Avionics Software Verification pt1]
 * TODO: find Heartbleed Example with Agda Showing Proofs
+
+=== Verified proof machinery and independent checkers
+
+See link:docs/verified-proof-machines.adoc[verified proof machinery, mechanised metatheory, independent checkers and certificate formats] for an evidence-aware starter inventory. This separates proof producers from checkers and machine-code-verified prover implementations; no runtime verification is claimed by the collection.
