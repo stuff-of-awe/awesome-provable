@@ -1,0 +1,11 @@
+{
+  "name": "awesome-provable",
+  "private": true,
+  "license": "MPL-2.0",
+  "scripts": {
+    "test": "bun tests/dependabot.js"
+  },
+  "devDependencies": {
+    "yaml": "2.9.1"
+  }
+}
